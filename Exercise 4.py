@@ -104,7 +104,7 @@ xcs = plotc[['const','DBT_RATIO','event_time',
  'cubic_spline_b2',
  'cubic_spline_b3']]
 
-plotc = plotc.reshape(-1,1)
+plotc = plotc.reshape(-1,1)# not working
 
 pred_p = mlogit.predict(plotc)
 
