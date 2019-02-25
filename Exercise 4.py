@@ -10,7 +10,7 @@ k =[23,41,68]
 
 print(k)
 
-#Change file location
+ #Change file location to read SAS file
 df=pd.read_sas(r"C:\Users\rahul.slathia\Desktop\College Stuff\Ex 4 Survival\loans_expanded.sas7bdat",encoding='utf-7')
 df.head()
 
