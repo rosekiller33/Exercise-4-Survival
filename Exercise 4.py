@@ -59,7 +59,6 @@ pred = fmlogit.predict(xc)
 final = pd.concat([i,x,y,pred],axis=1)
 
 data = pd.Series(range(0,181))
-
 d1 = pd.DataFrame(data=data, columns=['event_time'])
 d1['cred_score'] = 690
 d2 = pd.DataFrame(data=data, columns=['event_time'])
