@@ -30,8 +30,6 @@ i =df[['ID']]
 
 y=df[['event_type']]
 
-#y['event_type'] =y['event_type'].astype(str).replace('\.0+$', '', regex=True)
-
 xc= sm.add_constant(x)
 
 mlogit =sm.MNLogit(y,xc)
