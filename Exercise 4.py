@@ -8,8 +8,14 @@ import statsmodels.api as sm
 
 k =[23,41,68]   
 
- #Change file location to read SAS file
-df=pd.read_sas(r"/Users/slathia/Desktop/BAN 5763 SEM 4/Survival Miniung/loans_expanded.sas7bdat")
+#Change file location to read SAS file
+#df=pd.read_sas(r"/Users/slathia/Desktop/BAN 5763 SEM 4/Survival Miniung/loans_expanded.sas7bdat")
+#
+#df.to_csv(r"/Users/slathia/Desktop/BAN 5763 SEM 4/Survival Miniung/ex4.csv")
+
+url = 'https://github.com/slathia18/Sas-DataSet/blob/master/ex4.csv?raw=true'
+df = pd.read_csv(url,sep=',',index_col=0,engine='python')
+#
 
 df['cubic_spline_b1'] = (df['event_time']>k[0])*(df['event_time']-k[0])**3-df['event_time']**3+3*k[0]*df['event_time']**2-3*k[0]**2*df['event_time']
 df['cubic_spline_b2'] = (df['event_time']>k[1])*(df['event_time']-k[1])**3-df['event_time']**3+3*k[1]*df['event_time']**2-3*k[1]**2*df['event_time']
