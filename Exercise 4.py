@@ -1,27 +1,19 @@
 import pandas as pd
 import numpy as np 
 import matplotlib.pyplot as plt
-from sklearn.linear_model import LogisticRegression
+#from sklearn.linear_model import LogisticRegression
 import statsmodels.api as sm  
-from sklearn import linear_model
-from sklearn import metrics
+#from sklearn import linear_model
+#from sklearn import metrics
 
 k =[23,41,68]   
-
-print(k)
 
  #Change file location to read SAS file
 df=pd.read_sas(r"/Users/slathia/Desktop/BAN 5763 SEM 4/Survival Miniung/loans_expanded.sas7bdat")
 
-df.head()
-
 df['cubic_spline_b1'] = (df['event_time']>k[0])*(df['event_time']-k[0])**3-df['event_time']**3+3*k[0]*df['event_time']**2-3*k[0]**2*df['event_time']
 df['cubic_spline_b2'] = (df['event_time']>k[1])*(df['event_time']-k[1])**3-df['event_time']**3+3*k[1]*df['event_time']**2-3*k[1]**2*df['event_time']
 df['cubic_spline_b3'] = (df['event_time']>k[2])*(df['event_time']-k[2])**3-df['event_time']**3+3*k[2]*df['event_time']**2-3*k[2]**2*df['event_time']
-
-df.head()
-
-list(df)
 
 x=df[['DBT_RATIO', 'cred_score', 'event_time',
            'cubic_spline_b1','cubic_spline_b2','cubic_spline_b3' ]]
@@ -117,7 +109,7 @@ plot1 = plot1[['const','DBT_RATIO','cred_score','event_time',
  'cubic_spline_b2',
  'cubic_spline_b3']]
 
-pred_p1 = fmlogit.predict(plot)
+pred_p1 = fmlogit.predict(plot1)
 
 plot_pd1 = pd.concat([plot1,pred_p1],axis=1)
 
